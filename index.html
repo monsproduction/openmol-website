@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OpenMol</title>
 <meta name="description" content="OpenMol – der neue Benchmark zum Zeichnen von chemischen Strukturen und Reaktionen.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#2f6be3">
 <style>
 /* Schriften lokal eingebunden (SIL Open Font License, siehe fonts/OFL-*.txt) */
 @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format('woff2')}
@@ -17,19 +21,36 @@ body{background:#f0f5fd;color:#0f1f4d;font-family:'Inter',system-ui,sans-serif;f
 header{background:#fefdfe;border-bottom:1px solid #dfe5f1}
 header .wrap{height:60px;display:flex;align-items:center;gap:10px}
 .brand{font-size:20px;font-weight:600;letter-spacing:-0.01em}
-main{flex:1;display:flex;align-items:center;padding:64px 0}
+main{flex:1;display:flex;align-items:center;padding:56px 0}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px 40px;align-items:center}
+.hero-head{grid-column:1 / -1}
 .eyebrow{margin:0 0 14px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#153a9f;letter-spacing:.02em}
 .dot{width:8px;height:8px;border-radius:50%;background:#fd614b;display:inline-block}
 h1{margin:0;max-width:16em;font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:60px;line-height:1.06;letter-spacing:-0.025em}
-.teaser{margin:28px 0 0;max-width:36em;font-size:18px;line-height:1.55;color:#566079}
+.teaser{margin:0;max-width:30em;font-size:18px;line-height:1.55;color:#566079}
 .teaser strong{display:block;color:#0f1f4d;font-weight:600}
+/* App-Fenster wie auf der Startseite */
+.app{background:#fefdfe;border:1px solid #cfd8ea;border-radius:12px;box-shadow:0 1px 2px rgba(15,31,77,.06),0 18px 48px -24px rgba(15,31,77,.3);overflow:hidden}
+.app-bar{display:flex;align-items:center;gap:7px;padding:0 14px;height:36px;background:#f6f8fc;border-bottom:1px solid #dfe5f1}
+.app-bar .b{width:10px;height:10px;border-radius:50%;background:#cfd8ea}
+.app-tab{margin-left:12px;padding:5px 14px;background:#fefdfe;border:1px solid #dfe5f1;border-bottom:none;border-radius:7px 7px 0 0;font-size:12px;font-weight:600;align-self:flex-end;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-body{display:flex}
+.tools{width:44px;flex:none;background:#f6f8fc;border-right:1px solid #dfe5f1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0}
+.tools span{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;color:#566079}
+.tools span.on{background:#2f6be3}
+.canvas{flex:1;min-width:0;padding:16px 18px 14px}
+.canvas img{display:block;width:100%;height:auto}
+.canvas img + img{margin-top:8px}
 footer{border-top:1px solid #dfe5f1;background:#fefdfe}
 footer .wrap{padding-top:18px;padding-bottom:18px;font-size:12.5px;line-height:1.55;color:#566079}
 @media (max-width:900px){
 .wrap{padding:0 16px}
-main{padding:40px 0}
+main{padding:36px 0}
+.hero{grid-template-columns:minmax(0,1fr);gap:24px}
 h1{font-size:36px}
 .teaser{font-size:16px}
+.tools{display:none}
+.canvas{padding:12px}
 }
 </style>
 </head>
@@ -44,10 +65,36 @@ h1{font-size:36px}
 </header>
 
 <main>
-<div class="wrap">
+<div class="wrap hero">
+
+<div class="hero-head">
 <p class="eyebrow"><span class="dot" aria-hidden="true"></span>OpenMol</p>
 <h1>Der neue Benchmark zum Zeichnen von chemischen Strukturen und Reaktionen.</h1>
+</div>
+
 <p class="teaser"><strong>Hier entsteht gerade etwas ganz Großes.</strong>Sei gespannt.</p>
+
+<div class="app">
+<div class="app-bar">
+<span class="b" aria-hidden="true"></span><span class="b" aria-hidden="true"></span><span class="b" aria-hidden="true"></span>
+<span class="app-tab">Suzuki-Kupplung.openmol</span>
+</div>
+<div class="app-body">
+<div class="tools" aria-hidden="true">
+<span class="on"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"><path d="M5 3l12 7-5.5 1.5L9 17z"/></svg></span>
+<span><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#566079" stroke-width="1.8" stroke-linecap="round"><path d="M4 16L16 4"/></svg></span>
+<span><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#566079" stroke-width="1.8" stroke-linejoin="round"><path d="M10 2l7 4v8l-7 4-7-4V6z"/></svg></span>
+<span>C</span>
+<span><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#566079" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h13M12 6l4 4-4 4"/></svg></span>
+<span><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#566079" stroke-width="1.8" stroke-linejoin="round"><path d="M3 4h14v12H3zM3 9h14M8 4v12"/></svg></span>
+</div>
+<div class="canvas">
+<img src="img/suzuki-reaktion.png" width="2111" height="345" alt="Reaktionsschema der Suzuki-Kupplung: 4-Bromanisol und Phenylboronsäure ergeben 4-Methoxybiphenyl, Bedingungen K2CO3, Pd(PPh3)4, Dioxan/Wasser, 90 °C, 16 h">
+<img src="img/ansatztabelle.png" width="2125" height="702" alt="Zugehörige Ansatztabelle mit CAS-Nummern, GHS-Piktogrammen, Äquivalenten, Stoffmengen, Massen und Ausbeute von 86 %">
+</div>
+</div>
+</div>
+
 </div>
 </main>
 
